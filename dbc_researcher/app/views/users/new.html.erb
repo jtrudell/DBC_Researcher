@@ -1,12 +1,12 @@
-Create an account here.
+<h2>Create an account here.</h2>
 
 <%= form_for :user, url: '/users' do |f| %>
 
-  Name: <%= f.text_field :name %>
-  Title: <%= f.title :title %>
-  Email: <%= f.text_field :email %>
-  Password: <%= f.password_field :password %>
-  Password Confirmation: <%= f.password_field :password_confirmation %>
+  Name: <%= f.text_field :name %><br><br>
+  Title: <%= f.text_field :title %><br><br>
+  Email: <%= f.text_field :email %><br><br>
+  Password: <%= f.password_field :password %><br><br>
+  Password Confirmation: <%= f.password_field :password_confirmation %><br><br>
   <%= f.submit "Submit" %>
 
 <% end %>
