@@ -28,4 +28,24 @@ ActiveRecord::Schema.define(version: 20151111230744) do
     t.datetime "updated_at",                       null: false
   end
 
+  create_table "proposals", force: :cascade do |t|
+    t.string   "title"
+    t.string   "problem_description"
+    t.string   "hypothesis"
+    t.integer  "user_id"
+    t.boolean  "approved"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "name",                            null: false
+    t.string   "title",                           null: false
+    t.string   "email",                           null: false
+    t.string   "password_digest"
+    t.boolean  "admin",           default: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+  end
+
 end
