@@ -9,6 +9,7 @@
 
   </ul>
 
+  <%= render partial: "comments/form", url: proposal_comments_path(@proposal.id), locals: {comment: @comment, action: proposal_comments_path(@proposal.id) }  %>
 <br>
 
 <%= link_to 'Proposals', proposals_path %>
