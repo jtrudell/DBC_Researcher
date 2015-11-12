@@ -6,5 +6,6 @@ class User < ActiveRecord::Base
   has_many :proposals
   has_many :observations
   has_many :comments
+  has_many :staredproposals
   has_secure_password
 end
