@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  proposal: 1
+  cohort_id: 1
+  experiment_description: MyString
+  required_supplies_for_experiment: MyString
+  goal_description: MyString
+  conclusions: MyString
+  completed: false
+
+two:
+  proposal: 1
+  cohort_id: 1
+  experiment_description: MyString
+  required_supplies_for_experiment: MyString
+  goal_description: MyString
+  conclusions: MyString
+  completed: false
