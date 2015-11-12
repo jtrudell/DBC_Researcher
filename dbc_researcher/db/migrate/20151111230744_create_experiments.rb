@@ -3,6 +3,7 @@ class CreateExperiments < ActiveRecord::Migration
     create_table :experiments do |t|
       t.integer :proposal_id
       t.integer :cohort_id
+      t.integer :user_id
       t.string :experiment_description
       t.string :required_supplies_for_experiment
       t.string :goal_description
