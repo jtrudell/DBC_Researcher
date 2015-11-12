@@ -4,7 +4,7 @@
   </tr>
   <%@experiments.each do |experiment|%>
     <tr>
-      <td><a href=<%=proposal_path(experiment.proposal.id)%>><%=experiment.proposal.title%></a></td><td><%=experiment.cohort.year.to_s + ' ' + experiment.cohort.name%></td><td><a href=<%=proposal_experiment_path(experiment.proposal.id, experiment.id)%>><%=experiment.experiment_description%></a></td><td><%=experiment.required_supplies_for_experiment%></td><td><%=experiment.goal_description%></td><td><%=experiment.conclusions%></td><td><%=experiment.completed%></td><td></td>
+      <td><a href=<%=proposal_path(experiment.proposal.id)%>><%=experiment.proposal.title%></a></td><td><%=experiment.cohort.year.to_s + ' ' + experiment.cohort.name%></td><td><a href=<%=edit_proposal_experiment_path(experiment.proposal.id, experiment.id)%>><%=experiment.experiment_description%></a></td><td><%=experiment.required_supplies_for_experiment%></td><td><%=experiment.goal_description%></td><td><%=experiment.conclusions%></td><td><%=experiment.completed%></td><td></td>
     </tr>
   <%end%>
 </table>

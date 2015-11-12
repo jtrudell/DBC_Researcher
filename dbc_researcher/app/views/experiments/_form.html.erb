@@ -11,6 +11,9 @@
   <%=  f.label :Conclusion %>
   <%=  f.text_field :conclusions %>
   <br>
+  <%=  f.label :Complete %>
+  <%=f.check_box :completed%>
+  <br>
   <%=  f.label :Cohort %>
   <%=select_tag "cohort", options_for_select(cohort)%>
   <%=f.submit "Submit" %>
