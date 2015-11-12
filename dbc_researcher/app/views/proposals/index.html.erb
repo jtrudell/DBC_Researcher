@@ -1,35 +1,40 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Proposals</h1>
+<% if current_user %>
+  <h1>Proposals</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Instructor</th>
-      <th>Problem</th>
-      <th>Hypothesis</th>
-      <th>Approval Status</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @proposals.each do |proposal| %>
+  <table>
+    <thead>
       <tr>
-        <td><%= proposal.title %></td>
-        <td><%= proposal.user.name %></td>
-        <td><%= proposal.problem_description %></td>
-        <td><%= proposal.hypothesis %></td>
-        <td><%= approved_status(proposal) %></td>
-        <td><%= link_to 'Show', proposal %></td>
-        <td><%= link_to 'Edit', edit_proposal_path(proposal) %></td>
-        <td><%= link_to 'Destroy', proposal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Title</th>
+        <th>Instructor</th>
+        <th>Problem</th>
+        <th>Hypothesis</th>
+        <th>Approval Status</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @proposals.each do |proposal| %>
+        <tr>
+          <td><%= proposal.title %></td>
+          <td><%= proposal.user.name %></td>
+          <td><%= proposal.problem_description %></td>
+          <td><%= proposal.hypothesis %></td>
+          <td><%= approved_status(proposal) %></td>
+          <td><%= link_to 'Show', proposal %></td>
+          <td><%= link_to 'Edit', edit_proposal_path(proposal) %></td>
+          <td><%= link_to 'Destroy', proposal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to 'New Proposal', new_proposal_path %>
+  <br>
+
+  <%= link_to 'New Proposal', new_proposal_path %>
+<% else %>
+  <h3>Only authorized users can access ResearchIt! Please login in below.</h3>
+  <%= render '/sessions/new' %>
+<% end %>
