@@ -1,2 +1,8 @@
-<h1>Observations#show</h1>
-<p>Find me in app/views/observations/show.html.erb</p>
+<h1>Observation</h1>
+
+  <div>
+    Observation: <%= @observation.observation_text %><br>
+    Date: <%= format_date(@observation.created_at) %><br>
+    Observer Name: <%= @observation.user.name %>
+  </div>
+
