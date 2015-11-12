@@ -1,2 +1,8 @@
-<h1>Observations#index</h1>
-<p>Find me in app/views/observations/index.html.erb</p>
+<h1>Observations</h1>
+<% @observations.each do |observation| %>
+  <div>
+    Date: <%= observation.created_at %><br>
+    Observation: <%= observation.observation_text %><br>
+    Observer Name:<%= observation.user.name %>
+  </div>
+<% end %>
