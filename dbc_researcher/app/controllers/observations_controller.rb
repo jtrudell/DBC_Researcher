@@ -14,10 +14,18 @@ class ObservationsController < ApplicationController
   end
 
   def create
-    if @observation && @observation.save
+    @observation = Observation.new(observation_params, user_id: current_user.id, experiment_id: params[:experiment_id])
+
+    if @observation.save
       redirect_to '/'
     else
       redirect_to '/observations/new'
     end
+  end
+
+  private
+
+  def observation_params
+    params.require(:observation).permit(:observation_text)
   end
 end

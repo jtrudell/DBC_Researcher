@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-    resources :observations
+    # resources :observations
+
+    get '/experiments/:experiment_id/observations' => 'observations#index', as: "observations"
+    get '/experiments/:experiment_id/observations/new' => 'observations#new', as: "new_observations"
+    post '/observations/create' => 'observations#create'
+
     resources :proposals
     resources :experiments
 
