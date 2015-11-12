@@ -59,9 +59,9 @@ ActiveRecord::Schema.define(version: 20151112213212) do
     t.string   "problem_description"
     t.string   "hypothesis"
     t.integer  "user_id"
-    t.boolean  "approved",            default: false
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.boolean  "approved"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
   create_table "starredproposals", force: :cascade do |t|

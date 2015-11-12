@@ -23,10 +23,14 @@
     <%= f.label :hypothesis %><br>
     <%= f.text_field :hypothesis %>
   </div>
-  <div class="field">
-    <%= f.label :approved %><br>
-    <%= f.check_box :approved %>
-  </div>
+
+  <% if current_user.admin == true %>
+    <div class="field">
+      <%= f.label :Check_to_approve_proposal: %>
+      <%= f.check_box :approved %>
+    </div>
+  <% end %>
+
   <div class="actions">
     <%= f.submit %>
   </div>
