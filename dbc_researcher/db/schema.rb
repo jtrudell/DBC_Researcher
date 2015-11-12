@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20151111225930) do
   end
 
 
+
   create_table "experiments", force: :cascade do |t|
     t.integer  "proposal_id"
     t.integer  "cohort_id"
