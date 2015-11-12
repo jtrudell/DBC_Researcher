@@ -1,0 +1,21 @@
+<%= form_for @experiment, url: action do |f| %>
+  <%=  f.label :Description %>
+  <%= f.text_field :experiment_description%>
+  <br>
+  <%=  f.label :Supplies %>
+  <%= f.text_field :required_supplies_for_experiment%>
+  <br>
+  <%=  f.label :Goals %>
+  <%= f.text_field :goal_description%>
+  <br>
+  <%=  f.label :Conclusion %>
+  <%=  f.text_field :conclusions %>
+  <br>
+  <%=  f.label :Complete %>
+  <%=f.check_box :completed%>
+  <br>
+  <%=  f.label :Cohort %>
+  <%=select_tag "cohort", options_for_select(cohort)%>
+  <%=f.submit "Submit" %>
+<%end%>
+
