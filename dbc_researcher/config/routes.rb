@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
     resources :proposals
-    resources :experiments
+    # resources :experiments
+
+    get 'proposals/:proposal_id/experiments/new' => 'experiments#new', as: "new_experiment"
+    get '/experiments' => 'experiments#index'
+    get 'proposals/:proposal_id/experiments/:id' => 'experiments#show', as: "experiment"
+    post 'proposals/:proposal_id/experiments/' => 'experiments#create'
 
     root "proposals#index"
     get '/login' => 'sessions#new'
