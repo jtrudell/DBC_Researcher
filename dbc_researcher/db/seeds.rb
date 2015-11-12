@@ -19,3 +19,8 @@ names.each do |name|
   Cohort.create(name: "#{name}", year: 2015, location: "Grosse Pointe Woods", num_of_students: rand(8..29))
   Cohort.create(name: "#{name}", year: 2016, location: "Grosse Pointe Woods", num_of_students: rand(8..29))
 end
+
+User.create(name: "Alice", email: "alice@devbootcamp.com", password: "password", title: "Faculty", admin: true)
+User.create(name: "Bill", email: "bill@devbootcamp.com", password: "password", title: "Faculty", admin: true)
+User.create(name: "Jill", email: "jill@devbootcamp.com", password: "password", title: "Teacher")
+User.create(name: "Steve", email: "steve@devbootcamp.com", password: "password", title: "Teacher")

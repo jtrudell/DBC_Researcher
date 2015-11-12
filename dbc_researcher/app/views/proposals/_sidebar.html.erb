@@ -4,8 +4,8 @@
 
       <% pending_proposals.each do |proposal| %>
         <ul>
-          <li><%= proposal.title %></li>
-          <li><%= proposal.user.name %></li>
+          <li>Title: <%= proposal.title %></li>
+          <li>Instructor: <%= proposal.user.name %></li>
           <li>Problem: <%= proposal.problem_description %></li>
           <li>Hypothesis: <%= proposal.hypothesis %></li>
           <td><%= approved_status(proposal) %></td>

@@ -26,11 +26,11 @@
 
   <% if current_user.admin == true %>
     <div class="field">
-      <%= f.label :approved %><br>
+      <%= f.label :Check_to_approve_proposal: %>
       <%= f.check_box :approved %>
     </div>
   <% end %>
-  
+
   <div class="actions">
     <%= f.submit %>
   </div>
