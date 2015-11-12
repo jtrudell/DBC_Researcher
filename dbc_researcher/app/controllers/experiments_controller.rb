@@ -10,7 +10,6 @@ class ExperimentsController < ApplicationController
     @experiment = Experiment.new
   end
   def create
-
       experiment = Experiment.new(proposal_id: params[:proposal_id], cohort_id: cohort_params[:cohort], user_id: session[:user_id], experiment_description: exp_params[:experiment_description], required_supplies_for_experiment: exp_params[:required_supplies_for_experiment], goal_description: exp_params[:goal_description], conclusions: exp_params[:conclusions])
 
       if experiment.save
@@ -25,6 +24,14 @@ class ExperimentsController < ApplicationController
   end
   def cohort_params
       params.permit(:cohort)
+  end
+  def edit
+    @experiment = Experiment.find_by(id: params[:id])
+    @action = proposal_experiment_path(params[:proposal_id], params[:id])
+  end
+  def update
+    Experiment.find_by(id: params[:id]).update_attributes(exp_params.merge({cohort: Cohort.find_by(id: cohort_params[:cohort])}))
+    redirect_to proposal_experiment_path(params[:id])
   end
 
 end
