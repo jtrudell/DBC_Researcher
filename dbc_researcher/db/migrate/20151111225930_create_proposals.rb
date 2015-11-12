@@ -6,7 +6,6 @@ class CreateProposals < ActiveRecord::Migration
       t.string :hypothesis
       t.integer :user_id
       t.boolean :approved, {default: false}
-      t.boolean :starred, {default: false}
 
       t.timestamps null: false
     end
