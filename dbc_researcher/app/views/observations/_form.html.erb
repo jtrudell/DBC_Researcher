@@ -1,5 +1,5 @@
 <%if @observation%>
-  <%= form_for(@observation) do |f| %>
+  <%= form_for @observation, url: proposal_experiment_observations_path do |f| %>
     <% if @observation.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(@observation.errors.count, "error") %> prohibited this observation from being saved:</h2>

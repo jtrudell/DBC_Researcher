@@ -1,9 +1,10 @@
 class ObservationsController < ApplicationController
-  def show
-  end
 
   def new
     @observation = Observation.new
+  end
+
+  def show
   end
 
   def edit
@@ -15,9 +16,9 @@ class ObservationsController < ApplicationController
 
   def create
     p observation_params
-    @observation = Observation.new(observation_params)
+    @observation = current_user.observations.create(observation_text: observation_params[:observation_text], experiment_id: params[:experiment_id])
 
-    if @observation.save
+    if @observation.valid?
       redirect_to '/'
     else
       redirect_to '/'
@@ -27,7 +28,7 @@ class ObservationsController < ApplicationController
   private
 
   def observation_params
-    params.require(:observation).permit(:observation_text, :user_id, :experiment_id)
+    params.require(:observation).permit(:observation_text)
   end
 
 end
