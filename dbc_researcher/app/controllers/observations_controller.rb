@@ -1,33 +1,47 @@
 class ObservationsController < ApplicationController
-  def show
+
+  def index
+    @observations = Observation.where(experiment_id: params[:experiment_id])
   end
 
   def new
     @observation = Observation.new
   end
 
+  def show
+    @observation = Observation.find_by(id: params[:id])
+  end
+
   def edit
     @observation = Observation.find_by(id: params[:id])
   end
 
-  def destroy
+  def update
+    @observation = Observation.find_by(id: params[:id])
+    @observation.assign_attributes(observation_params)
+
+    if @observation.save
+      redirect_to proposal_experiment_observations_path
+    else
+      redirect_to edit_proposal_experiment_observation_path
+    end
   end
 
   def create
-    p observation_params
-    @observation = Observation.new(observation_params)
+    @observation = current_user.observations.create(observation_text: observation_params[:observation_text], experiment_id: params[:experiment_id])
 
-    if @observation.save
-      redirect_to '/'
+    if @observation.valid?
+      redirect_to proposal_experiment_observations_path
     else
-      redirect_to '/'
+      redirect_to new_proposal_experiment_observation_path
     end
   end
+
 
   private
 
   def observation_params
-    params.require(:observation).permit(:observation_text, :user_id, :experiment_id)
+    params.require(:observation).permit(:observation_text)
   end
 
 end

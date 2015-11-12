@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
     resources :proposals do
       resources :comments
       resources :experiments do
