@@ -7,8 +7,20 @@ class ObservationsController < ApplicationController
   def show
   end
 
+
   def edit
     @observation = Observation.find_by(id: params[:id])
+  end
+
+  def update
+    @observation = Observation.find_by(id: params[:id])
+    @observation.assign_attributes(observation_params)
+
+    if @observation.save
+      p "it saved"
+    else
+      p "it didn't save"
+    end
   end
 
   def destroy

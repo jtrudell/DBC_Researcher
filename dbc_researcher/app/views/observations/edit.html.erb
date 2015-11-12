@@ -1,3 +1,3 @@
 <h2>Edit Observation</h2>
 
-<%= render 'form' %>
+<%= render 'form', locals: {observation: @observation}, action: proposal_experiment_observation_path %>
