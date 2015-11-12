@@ -7,6 +7,9 @@
     <li>Hypothesis: <%= @proposal.hypothesis %></li>
     <li>Approval Status:<%= approved_status(@proposal) %></li>
 
+    <% if @proposal.approved %>
+      <%= link_to 'Create an Experiment for this Proposal', new_proposal_experiment_path(@proposal) %>
+    <% end %>
   </ul>
 
 <br>
