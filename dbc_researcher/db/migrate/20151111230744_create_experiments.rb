@@ -8,7 +8,7 @@ class CreateExperiments < ActiveRecord::Migration
       t.string :required_supplies_for_experiment
       t.string :goal_description
       t.string :conclusions
-      t.boolean :completed
+      t.boolean :completed, {default: false}
 
       t.timestamps null: false
     end

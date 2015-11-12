@@ -8,6 +8,7 @@ class Experiment < ActiveRecord::Base
   validates :proposal_id, presence: true
   validates :cohort_id, presence: true
   validates :experiment_description, presence: true
-  validates :completed, presence: true
+
+
 
 end
