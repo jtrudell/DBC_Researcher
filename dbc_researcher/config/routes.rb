@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
-    resources :proposals
-    # resources :experiments
-
-    get 'proposals/:proposal_id/experiments/new' => 'experiments#new', as: "new_experiment"
-    get '/experiments' => 'experiments#index'
-    get 'proposals/:proposal_id/experiments/:id' => 'experiments#show', as: "experiment"
-    post 'proposals/:proposal_id/experiments/' => 'experiments#create'
+    resources :proposals do
+      resources :comments
+      resources :experiments do
+          resources :comments
+          resources :observations do
+              resources :comments
+          end
+      end
+    end
 
     root "proposals#index"
     get '/login' => 'sessions#new'
@@ -14,7 +16,5 @@ Rails.application.routes.draw do
 
     get '/users/new' => 'users#new'
     post '/users' => 'users#create'
-
-  resources :proposals
 
 end

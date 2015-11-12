@@ -35,9 +35,15 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem required by heroku
 gem 'rails_12factor', group: :production
 
+
 group :development, :test do
+  gem 'rspec-rails'
+  gem 'capybara'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+
+  # gem for using factories in tests
+  gem 'factory_girl_rails'
 end
 
 group :development do

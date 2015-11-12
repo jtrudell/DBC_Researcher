@@ -37,14 +37,13 @@ ActiveRecord::Schema.define(version: 20151112154145) do
   create_table "experiments", force: :cascade do |t|
     t.integer  "proposal_id"
     t.integer  "cohort_id"
-    t.integer  "user_id"
     t.string   "experiment_description"
     t.string   "required_supplies_for_experiment"
     t.string   "goal_description"
     t.string   "conclusions"
-    t.boolean  "completed",                        default: false
-    t.datetime "created_at",                                       null: false
-    t.datetime "updated_at",                                       null: false
+    t.boolean  "completed"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
   end
 
   create_table "observations", force: :cascade do |t|
