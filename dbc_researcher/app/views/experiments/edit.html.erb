@@ -1,0 +1,1 @@
+<%=render partial: 'form', locals: { action: @action, cohort: Cohort.all.map {|cohort| [cohort.name, cohort.id]}, experiment: @experiment} %>
