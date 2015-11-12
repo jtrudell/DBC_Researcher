@@ -11,12 +11,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20151111225930) do
+ActiveRecord::Schema.define(version: 20151112154145) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "cohorts", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "year"
+    t.string   "location"
+    t.integer  "num_of_students"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "user_id"
+    t.text     "comment_text"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  create_table "experiments", force: :cascade do |t|
+    t.integer  "proposal_id"
+    t.integer  "cohort_id"
+    t.integer  "user_id"
+    t.string   "experiment_description"
+    t.string   "required_supplies_for_experiment"
+    t.string   "goal_description"
+    t.string   "conclusions"
+    t.boolean  "completed",                        default: false
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
+  end
+
+  create_table "observations", force: :cascade do |t|
+    t.integer  "experiment_id",    null: false
+    t.string   "observation_text", null: false
+    t.integer  "user_id",          null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
 
   create_table "proposals", force: :cascade do |t|
     t.string   "title"
@@ -36,20 +73,6 @@ ActiveRecord::Schema.define(version: 20151111225930) do
     t.boolean  "admin",           default: false
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
-  end
-
-
-
-  create_table "experiments", force: :cascade do |t|
-    t.integer  "proposal_id"
-    t.integer  "cohort_id"
-    t.string   "experiment_description"
-    t.string   "required_supplies_for_experiment"
-    t.string   "goal_description"
-    t.string   "conclusions"
-    t.boolean  "completed"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
   end
 
 end

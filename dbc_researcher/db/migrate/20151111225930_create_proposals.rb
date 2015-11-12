@@ -5,7 +5,7 @@ class CreateProposals < ActiveRecord::Migration
       t.string :problem_description
       t.string :hypothesis
       t.integer :user_id
-      t.boolean :approved
+      t.boolean :approved, {default: false}
 
       t.timestamps null: false
     end

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  experiment: 1
+  observation_text: MyString
+  user_id: 1
+
+two:
+  experiment: 1
+  observation_text: MyString
+  user_id: 1
