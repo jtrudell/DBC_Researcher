@@ -16,8 +16,8 @@ class ProposalsController < ApplicationController
   end
 
   def create
-    @proposal = Proposal.new(proposal_params)
-    if @proposal.save
+    @proposal = current_user.proposals.create(title: proposal_params[:title], problem_description: proposal_params[:problem_description], hypothesis: proposal_params[:hypothesis])
+    if @proposal.valid?
       redirect_to @proposal, notice: 'Proposal was successfully created.'
     else
       render :new
@@ -43,6 +43,6 @@ private
   end
 
   def proposal_params
-    params.require(:proposal).permit(:title, :problem_description, :hypothesis, :user_id, :approved)
+    params.require(:proposal).permit(:title, :problem_description, :hypothesis)
   end
 end
