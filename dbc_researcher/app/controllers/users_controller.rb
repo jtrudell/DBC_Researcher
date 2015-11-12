@@ -8,9 +8,9 @@ class UsersController < ActionController::Base
     user = User.new(user_params)
     if user.save
       session[:user_id] = user.id
-      redirect_to '/'
+      redirect_to '/proposals'
     else
-      redirect_to 'users/new'
+      redirect_to '/users/new'
     end
   end
 
