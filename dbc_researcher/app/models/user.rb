@@ -4,5 +4,6 @@ class User < ActiveRecord::Base
   validates_format_of :email, :with => /.*@devbootcamp.com/, :on => :create
 
   has_many :proposals
+  has_many :comments
   has_secure_password
 end
