@@ -4,6 +4,6 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = current_user.comments.create()
+    @comment =
   end
 end

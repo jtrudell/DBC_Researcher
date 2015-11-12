@@ -9,9 +9,14 @@
 
   </ul>
 
-  <%= render partial: "comments/form", url: proposal_comments_path(@proposal.id), locals: {comment: @comment, action: proposal_comments_path(@proposal.id) }  %>
 <br>
 
 <%= link_to 'Proposals', proposals_path %>
 <%= link_to 'Edit', edit_proposal_path(@proposal) %></li>
 <%= link_to 'Destroy', @proposal, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+<%=render partial: "comments/form", locals: {action: proposal_comments_path(@proposal)}%>
+
+
+
+
