@@ -1,0 +1,19 @@
+<h2>Pending Proposals</h2>
+
+<div>
+
+      <% pending_proposals.each do |proposal| %>
+        <ul>
+          <li><%= proposal.title %></li>
+          <li><%= proposal.user.name %></li>
+          <li>Problem: <%= proposal.problem_description %></li>
+          <li>Hypothesis: <%= proposal.hypothesis %></li>
+          <td><%= approved_status(proposal) %></td>
+          <td><%= link_to 'Show', proposal %></td>
+        </ul>
+      <% end %>
+
+
+  <br>
+
+</div>
