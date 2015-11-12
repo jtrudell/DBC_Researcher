@@ -1,8 +1,8 @@
 <h1>Observations</h1>
 <% @observations.each do |observation| %>
   <div>
-    Date: <%= observation.created_at %><br>
     Observation: <%= observation.observation_text %><br>
-    Observer Name:<%= observation.user.name %>
+    Date: <%= format_date(observation.created_at) %><br>
+    Observer Name: <%= observation.user.name %>
   </div><br>
 <% end %>
