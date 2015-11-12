@@ -11,4 +11,8 @@ class ApplicationController < ActionController::Base
   def authorize
     redirect_to '/login' unless current_user
   end
+
+  def format_date(timestamp)
+    timestamp.strftime('%B %e, %Y')
+  end
 end
