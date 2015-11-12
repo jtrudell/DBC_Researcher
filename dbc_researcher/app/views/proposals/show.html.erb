@@ -5,12 +5,13 @@
     <li>Creator: <%= @proposal.user.name %></li>
     <li>Problem: <%= @proposal.problem_description %></li>
     <li>Hypothesis: <%= @proposal.hypothesis %></li>
-    <li>Approval Status:<%= approved_status(@proposal) %></li>
-
+    <li>Approval Status: <%= approved_status(@proposal) %></li>
   </ul>
 
 <br>
 
 <%= link_to 'Proposals', proposals_path %>
-<%= link_to 'Edit', edit_proposal_path(@proposal) %></li>
-<%= link_to 'Destroy', @proposal, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% if current_user.id == @proposal.user.id || current_user.admin == true %>
+  <%= link_to 'Edit', edit_proposal_path(@proposal) %></li>
+  <%= link_to 'Destroy', @proposal, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
