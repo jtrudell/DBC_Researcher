@@ -1,6 +1,6 @@
 module ProposalsHelper
 
   def approved_status(proposal)
-    proposal.approved ? "Yes" : "Not Yet"
+    proposal.approved ? "Approved" : "Open"
   end
 end

@@ -2,7 +2,7 @@
 <h1><%= @proposal.title %></h1>
 
   <ul>
-    <li>Creator: <%= @proposal.user_id.name %></li>
+    <li>Creator: <%= @proposal.user.name %></li>
     <li>Problem: <%= @proposal.problem_description %></li>
     <li>Hypothesis: <%= @proposal.hypothesis %></li>
     <li>Approval Status:<%= approved_status(@proposal) %></li>

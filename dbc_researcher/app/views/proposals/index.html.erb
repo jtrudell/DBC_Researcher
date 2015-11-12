@@ -9,7 +9,7 @@
       <th>Instructor</th>
       <th>Problem</th>
       <th>Hypothesis</th>
-      <th>Approved?</th>
+      <th>Approval Status</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,10 +18,10 @@
     <% @proposals.each do |proposal| %>
       <tr>
         <td><%= proposal.title %></td>
-        <td><%= proposal.user_id.name %></td>
+        <td><%= proposal.user.name %></td>
         <td><%= proposal.problem_description %></td>
         <td><%= proposal.hypothesis %></td>
-        <td><%= proposal.approved %></td>
+        <td><%= approved_status(proposal) %></td>
         <td><%= link_to 'Show', proposal %></td>
         <td><%= link_to 'Edit', edit_proposal_path(proposal) %></td>
         <td><%= link_to 'Destroy', proposal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
