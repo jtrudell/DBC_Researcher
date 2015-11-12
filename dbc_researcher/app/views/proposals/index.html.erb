@@ -24,8 +24,10 @@
           <td><%= proposal.hypothesis %></td>
           <td><%= approved_status(proposal) %></td>
           <td><%= link_to 'Show', proposal %></td>
-          <td><%= link_to 'Edit', edit_proposal_path(proposal) %></td>
-          <td><%= link_to 'Destroy', proposal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% if current_user.id == proposal.user.id || current_user.admin == true %>
+            <td><%= link_to 'Edit', edit_proposal_path(proposal) %></td>
+            <td><%= link_to 'Destroy', proposal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>
