@@ -1,0 +1,16 @@
+
+<h1><%= @proposal.title %></h1>
+
+  <ul>
+    <li>Creator: <%= @proposal.user.name %></li>
+    <li>Problem: <%= @proposal.problem_description %></li>
+    <li>Hypothesis: <%= @proposal.hypothesis %></li>
+    <li>Approval Status:<%= approved_status(@proposal) %></li>
+
+  </ul>
+
+<br>
+
+<%= link_to 'Proposals', proposals_path %>
+<%= link_to 'Edit', edit_proposal_path(@proposal) %></li>
+<%= link_to 'Destroy', @proposal, method: :delete, data: { confirm: 'Are you sure?' } %>
