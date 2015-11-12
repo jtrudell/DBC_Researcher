@@ -1,5 +1,10 @@
-<ul>
-<%@experiments.each do |experiment|%>
-  <li><%=experiment.goal_description%></li>
-<%end%>
-</ul>
+<table border="1">
+  <tr>
+    <td>Proposal</td><td>Cohort</td><td>Description</td><td>Required Supplies</td><td>Goals</td><td>Conclusions</td><td>Completed?</td>
+  </tr>
+  <%@experiments.each do |experiment|%>
+    <tr>
+      <td><%=experiment.proposal.title%></td><td><%=experiment.cohort.year.to_s + ' ' + experiment.cohort.name%></td><td><%=experiment.experiment_description%></td><td><%=experiment.required_supplies_for_experiment%></td><td><%=experiment.goal_description%></td><td><%=experiment.conclusions%></td><td><%=experiment.completed%></td><td></td>
+    </tr>
+  <%end%>
+</table>
