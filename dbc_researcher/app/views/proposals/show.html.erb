@@ -1,21 +1,48 @@
 <div class='container'>
-
+<div class="jumbotron">
 <h1>Proposal #<%= @proposal.id %>: <%= @proposal.title %></h1>
 
-  <ul class>
-    <li>Instructor: <%= @proposal.user.name %></li>
-    <li>Problem: <%= @proposal.problem_description %></li>
-    <li>Hypothesis: <%= @proposal.hypothesis %></li>
-    <li>Approval Status: <%= approved_status(@proposal) %></li>
-
-    <% if @proposal.approved %>
-      <%= link_to 'Create an Experiment for this Proposal', new_proposal_experiment_path(@proposal) %>
-    <% end %>
+<ul class="list-group">
+    <li class="list-group-item">Instructor: <%= @proposal.user.name %></li>
+    <li class="list-group-item">Problem: <%= @proposal.problem_description %></li>
+    <li class="list-group-item">Hypothesis: <%= @proposal.hypothesis %></li>
+    <li class="list-group-item">Approval Status: <%= approved_status(@proposal) %></li>
   </ul>
 
-<br>
+    <% if @proposal.approved %>
+    <button type="button" class="btn btn-info">
+      <%= link_to 'Create a New Experiment for this Proposal', new_proposal_experiment_path(@proposal) %>
+    </button>
+    <% end %>
+</div>
+
+    <%if @proposal.comments%>
+    <div class="panel panel-default panel-success">
+      <div class="panel-heading">Comments on Proposal #<%=@proposal.id%>:</div>
+      <div class="panel-body"><%@proposal.comments.each do |comment|%>
+        <%=comment.comment_text%><br>
+        by <%=comment.user.name%> on <%= format_date(comment.created_at) %><br><br>
+      <%end%>
+      </div>
+    </div>
+      <%end%>
+
+      <br>
+    <p>Add a comment:</p>
+    <%=render partial: "comments/form", locals: {action: proposal_comments_path(@proposal)}%>
+
+      <br>
+
+      <% if @proposal.experiments.any? %>
+        <% @proposal.experiments.each do |experiment| %>
+          <%= render partial: "experiments/show", layout: false, locals: {experiment: experiment} %>
+          <%end%>
+      <% end %>
+
+<div class='container'>
 
 <% if current_user.id == @proposal.user.id || current_user.admin == true %>
+
   <%= link_to 'Edit', edit_proposal_path(@proposal) %></li>
   <%= link_to 'Destroy', @proposal, method: :delete, data: { confirm: 'Are you sure?' } %>
 
@@ -31,4 +58,5 @@
   <% end %>
 <%=render partial: "comments/form", locals: {action: proposal_comments_path(@proposal)}%>
 <% end %>
+</div>
 </div>
