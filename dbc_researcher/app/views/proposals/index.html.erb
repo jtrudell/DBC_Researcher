@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+<div class='container'>
 <h1>Dashboard</h1>
 
 <div class= "panel panel-default">
@@ -13,6 +14,7 @@
       <table>
         <thead>
           <tr>
+            <th>ID</th>
             <th>Title</th>
             <th>Instructor</th>
             <th>Problem</th>
@@ -25,6 +27,7 @@
         <tbody>
           <% @proposals.each do |proposal| %>
             <tr>
+              <td>#<%= proposal.id %></td>
               <td><%= proposal.title %></td>
               <td><%= proposal.user.name %></td>
               <td><%= proposal.problem_description %></td>
@@ -46,8 +49,9 @@
 </div>
 
 <% else %>
-<div>
+<div class="jumbotron">
   <h3>Only authorized users can access ResearchIt! Please login in below.</h3>
   <%= render '/sessions/new' %>
 <div>
 <% end %>
+</div>

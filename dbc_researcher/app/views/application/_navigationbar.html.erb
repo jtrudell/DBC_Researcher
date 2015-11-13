@@ -33,7 +33,7 @@
 
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
-          <li>logged in as <%= current_user.email %></li>
+          <li class="navbar-brand">logged in as <%= current_user.email %></li>
           <li><%= link_to 'Logout', logout_path %></li>
         <% else %>
           <li><%= link_to 'Login', login_path %></li>

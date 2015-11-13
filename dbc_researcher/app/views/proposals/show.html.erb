@@ -1,5 +1,6 @@
+<div class='container'>
 
-<h1><%= @proposal.title %></h1>
+<h1>Proposal #<%= @proposal.id %>: <%= @proposal.title %></h1>
 
   <ul class>
     <li>Instructor: <%= @proposal.user.name %></li>
@@ -21,3 +22,4 @@
   <%= link_to 'Destroy', @proposal, method: :delete, data: { confirm: 'Are you sure?' } %>
 <%=render partial: "comments/form", locals: {action: proposal_comments_path(@proposal)}%>
 <% end %>
+</div>

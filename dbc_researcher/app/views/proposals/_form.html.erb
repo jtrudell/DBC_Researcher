@@ -1,3 +1,5 @@
+<div class='container'>
+
 <%= form_for(@proposal) do |f| %>
   <% if @proposal.errors.any? %>
     <div id="error_explanation">
@@ -35,3 +37,4 @@
     <%= f.submit %>
   </div>
 <% end %>
+</div>
