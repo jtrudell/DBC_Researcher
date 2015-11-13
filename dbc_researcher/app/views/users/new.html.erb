@@ -1,6 +1,14 @@
 <div class="jumbotron">
 
 <h2>Create an account here.</h2>
+
+<% if flash[:error] %>
+  <ul>
+    <%flash[:error].each do |error|%>
+      <li><%=error%></li>
+    <%end%>
+  </ul>
+<% end %>
 <div class="form-group">
 <%= form_for :user, url: '/users' do |f| %>
 
