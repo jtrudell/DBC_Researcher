@@ -26,9 +26,13 @@
 <%=render partial: "comments/form", locals: {action: proposal_experiment_comments_path(@proposal, @experiment)}%>
 
 
-<h3>Observations</h3>
 <ul>
-  <%@experiment.observations.each do |observation|%>
-    <li><%=observation.observation_text%></li>
-  <%end%>
+<%if @experiment.observations %>
+  <h3>Observations</h3>
+    <%@experiment.observations.each do |observation|%>
+      <li><%=observation.observation_text%></li>
+    <%end%>
+<%end%>
 </ul>
+
+<%= link_to "Add an Observation", new_proposal_experiment_observation_path(@proposal, @experiment)%>
