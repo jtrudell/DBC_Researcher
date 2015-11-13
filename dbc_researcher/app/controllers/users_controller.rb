@@ -12,6 +12,7 @@ class UsersController < ActionController::Base
       session[:user_id] = user.id
       redirect_to '/proposals'
     else
+      flash[:error] = user.errors.full_messages
       redirect_to '/users/new'
     end
   end
