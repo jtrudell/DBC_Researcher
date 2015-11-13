@@ -34,8 +34,8 @@ class ExperimentsController < ApplicationController
     redirect_to proposal_experiment_path(params[:proposal_id], params[:id])
   end
   def show
-    @experiments = [Experiment.find_by(id: params[:id])]
-    render :index
+    @experiment = Experiment.find_by(id: params[:id])
+    @proposal = Proposal.find_by(id: params[:proposal_id])
   end
 
 end

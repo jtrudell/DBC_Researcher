@@ -6,3 +6,5 @@
     Observer Name: <%= @observation.user.name %>
   </div>
 
+  <%=render partial: "comments/form", locals: {action: proposal_experiment_observation_comments_path(@proposal, @experiment, @observation)}%>
+
