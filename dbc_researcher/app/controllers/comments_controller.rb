@@ -6,7 +6,6 @@ class CommentsController < ApplicationController
   def create
     p params
     @comment = Proposal.find_by(id: params[:proposal_id]).comments.create(comment_params.merge({user_id: current_user.id}))
-    # @comment = current_user.comments.create(comment_params)
 
     if @comment.valid?
       p "it saved"
