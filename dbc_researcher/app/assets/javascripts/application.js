@@ -32,21 +32,20 @@
   // })
 
 // });
-$(document).ready(function() {
-  $('html').on('submit', 'form', function(e){
-    e.preventDefault();
-    console.log("goodbye!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-    var url =  $(this).attr('action');
-    var data = $(this).serialize();
-    var request = $.ajax({url: url, method: 'post', data: data})
-
-    request.done(function(data){
-      // console.log(data.comment_text);
-      var text = $(".comment").last();
-      console.log(text);
-      $(text).append('<div class="comment">'+ data.comment_text +'<br>'+ data.name +'</div>');
-
-    });
-  });
-});
-
+// $(document).ready(function() {
+//   $('html').on('submit', 'form', function(e){
+//     e.preventDefault();
+//     console.log("goodbye!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+//     var url =  $(this).attr('action');
+//     var data = $(this).serialize();
+//     var request = $.ajax({url: url, method: 'post', data: data})
+//
+//     request.done(function(data){
+//       // console.log(data.comment_text);
+//       var text = $(".comment").last();
+//       console.log(text);
+//       $(text).append('<div class="comment">'+ data.comment_text +'<br>'+ data.name +'</div>');
+//
+//     });
+//   });
+// });

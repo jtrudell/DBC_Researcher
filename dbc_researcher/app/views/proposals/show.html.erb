@@ -14,6 +14,11 @@
       <%= link_to 'Create a New Experiment for this Proposal', new_proposal_experiment_path(@proposal) %>
     </button>
     <% end %>
+    <% if current_user.id == @proposal.user.id || current_user.admin == true %>
+
+      <%= link_to 'Edit', edit_proposal_path(@proposal) %></li>
+      <%= link_to 'Destroy', @proposal, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%end%>
 </div>
 
     <%if @proposal.comments%>
@@ -27,11 +32,7 @@
     </div>
       <%end%>
 
-      <br>
-    <p>Add a comment:</p>
-    <%=render partial: "comments/form", locals: {action: proposal_comments_path(@proposal)}%>
 
-      <br>
 
       <% if @proposal.experiments.any? %>
         <% @proposal.experiments.each do |experiment| %>
@@ -41,22 +42,8 @@
 
 <div class='container'>
 
-<% if current_user.id == @proposal.user.id || current_user.admin == true %>
 
-  <%= link_to 'Edit', edit_proposal_path(@proposal) %></li>
-  <%= link_to 'Destroy', @proposal, method: :delete, data: { confirm: 'Are you sure?' } %>
-
-  <%if @proposal.comments%>
-    <h3>Comments</h3>
-    <div class="comment"></div>
-    <%@proposal.comments.each do |comment|%>
-      <div class="comment">
-        <%=comment.comment_text%><br>
-        <%=comment.user.name%><br><br>
-      </div>
-    <%end%>
-  <% end %>
+    <h3>Add a Comment:</h3>
 <%=render partial: "comments/form", locals: {action: proposal_comments_path(@proposal)}%>
-<% end %>
 </div>
 </div>
