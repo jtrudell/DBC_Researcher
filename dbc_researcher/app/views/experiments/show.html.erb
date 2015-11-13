@@ -1,3 +1,4 @@
+<div class='container'>
 <h3>Experiment number <%= @experiment.id %> </h3>
 
 <table class="table table-striped">
@@ -13,7 +14,7 @@
   <%= link_to "Edit", edit_proposal_experiment_path(params[:proposal_id], @experiment) %>
 <%end%><br><br>
 
-
+<div class='container'>
 <ul>
 <%if @experiment.observations %>
   <h3>Observations</h3>
@@ -24,7 +25,9 @@
 </ul>
 
 <%= link_to "Add an Observation", new_proposal_experiment_observation_path(@proposal, @experiment)%>
+</div>
 
+<div class='container'>
 <h3>Comments</h3>
 
   <%@experiment.comments.each do |comment|%>
@@ -33,4 +36,5 @@
   <%end%>
 
 <%=render partial: "comments/form", locals: {action: proposal_experiment_comments_path(@proposal, @experiment)}%>
-
+</div>
+</div>

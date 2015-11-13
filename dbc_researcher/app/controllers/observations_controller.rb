@@ -23,7 +23,7 @@ class ObservationsController < ApplicationController
     @observation.assign_attributes(observation_params)
 
     if @observation.save
-      redirect_to proposal_experiment_path(params[:proposal_id], params[:experiment_id])
+      redirect_to proposal_experiment_path(Proposal.find(params[:proposal_id]))
     else
       flash[:error] = "Error, please enter an observation"
       redirect_to edit_proposal_experiment_observation_path
