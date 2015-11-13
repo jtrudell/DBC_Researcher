@@ -18,7 +18,7 @@
 <%if @experiment.observations %>
   <h3>Observations</h3>
     <%@experiment.observations.each do |observation|%>
-      <li><%=observation.observation_text%></li>
+      <li><%=link_to "#{observation.observation_text}", proposal_experiment_observation_path(@proposal, @experiment, observation.id)%></li>
     <%end%>
 <%end%>
 </ul>
