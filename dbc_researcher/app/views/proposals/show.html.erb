@@ -18,6 +18,15 @@
 <% if current_user.id == @proposal.user.id || current_user.admin == true %>
   <%= link_to 'Edit', edit_proposal_path(@proposal) %></li>
   <%= link_to 'Destroy', @proposal, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+  <%if @proposal.comments%>
+    <h3>Comments</h3>
+
+    <%@proposal.comments.each do |comment|%>
+      <%=comment.comment_text%><br>
+      <%=comment.user.name%><br><br>
+    <%end%>
+  <% end %>
 <%=render partial: "comments/form", locals: {action: proposal_comments_path(@proposal)}%>
 <% end %>
 </div>
