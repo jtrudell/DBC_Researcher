@@ -4,8 +4,6 @@ class CommentsController < ApplicationController
   end
 
   def create
-    p params
-    puts "hello------------------"
     # @comment = Proposal.find_by(id: params[:proposal_id]).comments.create(comment_params.merge({user_id: current_user.id}))
 
     @observation = Observation.find_by(id: params[:observation_id])
@@ -14,7 +12,7 @@ class CommentsController < ApplicationController
 
     if @observation
       @comment = @observation.comments.create(comment_params.merge({user_id: current_user.id}))
-      redirect_to proposal_experiment_observation_path(@observation)
+      redirect_to proposal_experiment_observation_path(@proposal, @experiment, @observation)
     elsif @experiment
       @comment = @experiment.comments.create(comment_params.merge({user_id: current_user.id}))
       redirect_to proposal_experiment_path(@proposal, @experiment)
