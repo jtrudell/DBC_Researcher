@@ -1,6 +1,11 @@
 <div class="jumbotron">
 
 <h2>Login</h2>
+<% if flash[:error] %>
+  <ul>
+    <li><%=flash[:error]%></li>
+  </ul>
+<% end %>
 <div class="form-group">
 <%= form_tag '/login' do %>
 
