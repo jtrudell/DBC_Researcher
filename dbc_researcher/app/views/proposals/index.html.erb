@@ -11,7 +11,7 @@
 
     <h1>Proposals</h1>
 
-      <table>
+    <table class="table table-hover">
         <thead>
           <tr>
             <th>ID</th>
@@ -20,6 +20,7 @@
             <th>Problem</th>
             <th>Hypothesis</th>
             <th>Approval Status</th>
+            <th>Options</th>
             <th colspan="3"></th>
           </tr>
         </thead>
@@ -44,8 +45,6 @@
       </table>
 
   <br>
-
-  <%= link_to 'New Proposal', new_proposal_path %>
 </div>
 
 <% else %>

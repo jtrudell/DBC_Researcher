@@ -1,3 +1,4 @@
+<div class="form-group">
 <%if @observation%>
   <%= form_for @observation, url: action do |f| %>
     <% if @observation.errors.any? %>
@@ -21,3 +22,4 @@
     </div>
   <% end %>
 <%end%>
+</div>
