@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
       redirect_to proposal_experiment_observation_path(@observation)
     elsif @experiment
       @comment = @experiment.comments.create(comment_params.merge({user_id: current_user.id}))
-      redirect_to proposal_experiment_path(@experiment)
+      redirect_to proposal_experiment_path(@proposal, @experiment)
     elsif @proposal
       @comment = @proposal.comments.create(comment_params.merge({user_id: current_user.id}))
       redirect_to proposal_path(@proposal)

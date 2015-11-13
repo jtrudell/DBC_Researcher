@@ -10,7 +10,11 @@
 </table>
 <%if @experiment.user_id == current_user.id %>
   <%= link_to "Edit", edit_proposal_experiment_path(params[:proposal_id], @experiment) %>
-<%end%>
+<%end%><br><br>
+
+<%=render partial: "comments/form", locals: {action: proposal_experiment_comments_path(@proposal, @experiment)}%>
+
+
 <h3>Observations</h3>
 <ul>
   <%@experiment.observations.each do |observation|%>
