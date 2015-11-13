@@ -1,5 +1,7 @@
-<h2>Login</h2>
+<div class="jumbotron">
 
+<h2>Login</h2>
+<div class="form-group">
 <%= form_tag '/login' do %>
 
   Email: <%= text_field_tag :email %><br><br>
@@ -7,4 +9,6 @@
   <%= submit_tag "Submit" %>
 
 <% end %>
+</div>
 <p>Not a user? <%= link_to 'Register', users_new_path %></p>
+</div>

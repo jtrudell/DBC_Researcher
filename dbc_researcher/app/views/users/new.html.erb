@@ -1,5 +1,7 @@
-<h2>Create an account here.</h2>
+<div class="jumbotron">
 
+<h2>Create an account here.</h2>
+<div class="form-group">
 <%= form_for :user, url: '/users' do |f| %>
 
   Name: <%= f.text_field :name %><br><br>
@@ -10,3 +12,5 @@
   <%= f.submit "Submit" %>
 
 <% end %>
+</div>
+</div>

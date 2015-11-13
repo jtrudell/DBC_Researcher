@@ -1,3 +1,4 @@
+<div class="form-group">
 <%= form_for @experiment, url: action do |f| %>
   <%=  f.label :Description %>
   <%= f.text_field :experiment_description%>
@@ -18,4 +19,4 @@
   <%=select_tag "cohort", options_for_select(cohort)%>
   <%=f.submit "Submit" %>
 <%end%>
-
+</div>
