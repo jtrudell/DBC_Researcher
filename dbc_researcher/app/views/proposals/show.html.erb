@@ -11,7 +11,10 @@
 <br>
 
 <%= link_to 'Proposals', proposals_path %>
+
 <% if current_user.id == @proposal.user.id || current_user.admin == true %>
   <%= link_to 'Edit', edit_proposal_path(@proposal) %></li>
   <%= link_to 'Destroy', @proposal, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%=render partial: "comments/form", locals: {action: proposal_comments_path(@proposal)}%>
 <% end %>
+

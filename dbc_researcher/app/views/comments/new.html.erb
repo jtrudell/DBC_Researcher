@@ -1,0 +1,7 @@
+<!-- post_action = (request.env['PATH_INFO'])
+post_action.gsub('/new', '')
+ -->
+<!-- render partial: "_form", locals: {comment: @comment, action: (request.env['PATH_INFO']) -->
+<%= render partial: "form", locals: {comment: @comment} %>
+
+
