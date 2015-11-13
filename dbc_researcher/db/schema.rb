@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151112213212) do
+ActiveRecord::Schema.define(version: 20151112154145) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,13 +37,14 @@ ActiveRecord::Schema.define(version: 20151112213212) do
   create_table "experiments", force: :cascade do |t|
     t.integer  "proposal_id"
     t.integer  "cohort_id"
+    t.integer  "user_id"
     t.string   "experiment_description"
     t.string   "required_supplies_for_experiment"
     t.string   "goal_description"
     t.string   "conclusions"
-    t.boolean  "completed"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.boolean  "completed",                        default: false
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
   end
 
   create_table "observations", force: :cascade do |t|
@@ -59,16 +60,9 @@ ActiveRecord::Schema.define(version: 20151112213212) do
     t.string   "problem_description"
     t.string   "hypothesis"
     t.integer  "user_id"
-    t.boolean  "approved"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
-  end
-
-  create_table "starredproposals", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "proposal_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.boolean  "approved",            default: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   create_table "users", force: :cascade do |t|
