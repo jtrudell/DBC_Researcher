@@ -45,6 +45,6 @@ private
   end
 
   def proposal_params
-    params.require(:proposal).permit(:title, :problem_description, :hypothesis)
+    params.require(:proposal).permit(:title, :problem_description, :hypothesis, :approved)
   end
 end
