@@ -42,17 +42,21 @@
 <div class='container'>
 
 <% if current_user.id == @proposal.user.id || current_user.admin == true %>
-  <p>Proposal Options:</p>
-  <button type="button" class="btn btn-info">
-    <%= link_to 'Edit', edit_proposal_path(@proposal) %></li>
-  </button>
 
-  <button type="button" class="btn btn-info">
-    <%= link_to 'Destroy', @proposal, method: :delete, data: { confirm: 'Are you sure?' } %>
-  </button>
-  <%end%>
+  <%= link_to 'Edit', edit_proposal_path(@proposal) %></li>
+  <%= link_to 'Destroy', @proposal, method: :delete, data: { confirm: 'Are you sure?' } %>
 
-
+  <%if @proposal.comments%>
+    <h3>Comments</h3>
+    <div class="comment"></div>
+    <%@proposal.comments.each do |comment|%>
+      <div class="comment">
+        <%=comment.comment_text%><br>
+        <%=comment.user.name%><br><br>
+      </div>
+    <%end%>
+  <% end %>
+<%=render partial: "comments/form", locals: {action: proposal_comments_path(@proposal)}%>
+<% end %>
 </div>
-
 </div>

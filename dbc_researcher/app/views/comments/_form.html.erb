@@ -1,5 +1,7 @@
 <div class="form-group">
-<%= form_for :comment, url: action do |f| %>
+
+<%= form_for :comment, url: action, remote: true do |f| %>
+  <%=f.label :Comment%>
   <%=f.text_area :comment_text%>
   <br>
   <%= f.submit %>

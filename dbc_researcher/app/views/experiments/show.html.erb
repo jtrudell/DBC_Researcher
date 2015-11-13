@@ -24,15 +24,19 @@
 <%end%>
 </ul>
 
-<%= link_to "Add an Observation", new_proposal_experiment_observation_path(@proposal, @experiment)%>
-</div>
+
 
 <div class='container'>
+
+<%= link_to "Add an Observation", new_proposal_experiment_observation_path(@proposal, @experiment)%><br>
+<div class="comment"></div>
 <h3>Comments</h3>
 
   <%@experiment.comments.each do |comment|%>
-    <%=comment.comment_text%><br>
-    <%=comment.user.name%><br><br>
+    <div class="comment">
+      <%=comment.comment_text%><br>
+      <%=comment.user.name%><br><br>
+    </div>
   <%end%>
 
 <%=render partial: "comments/form", locals: {action: proposal_experiment_comments_path(@proposal, @experiment)}%>
