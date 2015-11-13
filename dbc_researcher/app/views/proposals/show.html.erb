@@ -1,5 +1,5 @@
 <div class='container'>
-
+<div class="jumbotron">
 <h1>Proposal #<%= @proposal.id %>: <%= @proposal.title %></h1>
 
 <ul class="list-group">
@@ -13,34 +13,46 @@
     <button type="button" class="btn btn-info">
       <%= link_to 'Create a New Experiment for this Proposal', new_proposal_experiment_path(@proposal) %>
     </button>
+    <% end %>
+</div>
+
+    <%if @proposal.comments%>
+    <div class="panel panel-default panel-success">
+      <div class="panel-heading">Comments on Proposal #<%=@proposal.id%>:</div>
+      <div class="panel-body"><%@proposal.comments.each do |comment|%>
+        <%=comment.comment_text%><br>
+        by <%=comment.user.name%> on <%= format_date(comment.created_at) %><br><br>
+      <%end%>
+      </div>
+    </div>
+      <%end%>
+
+      <br>
+    <p>Add a comment:</p>
+    <%=render partial: "comments/form", locals: {action: proposal_comments_path(@proposal)}%>
+
       <br>
 
-      <h3>Experiments associated with this proposal</h3>
       <% if @proposal.experiments.any? %>
         <% @proposal.experiments.each do |experiment| %>
           <%= render partial: "experiments/show", layout: false, locals: {experiment: experiment} %>
-        <% end %>
-      <% else %>
-        <p>No experiments have been created for this proposal yet</p>
+          <%end%>
       <% end %>
 
-
-    <% end %>
-
-<br>
+<div class='container'>
 
 <% if current_user.id == @proposal.user.id || current_user.admin == true %>
-  <%= link_to 'Edit', edit_proposal_path(@proposal) %></li>
-  <%= link_to 'Destroy', @proposal, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <p>Proposal Options:</p>
+  <button type="button" class="btn btn-info">
+    <%= link_to 'Edit', edit_proposal_path(@proposal) %></li>
+  </button>
 
-  <%if @proposal.comments%>
-    <h3>Comments</h3>
+  <button type="button" class="btn btn-info">
+    <%= link_to 'Destroy', @proposal, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </button>
+  <%end%>
 
-    <%@proposal.comments.each do |comment|%>
-      <%=comment.comment_text%><br>
-      <%=comment.user.name%><br><br>
-    <%end%>
-  <% end %>
-<%=render partial: "comments/form", locals: {action: proposal_comments_path(@proposal)}%>
-<% end %>
+
+</div>
+
 </div>

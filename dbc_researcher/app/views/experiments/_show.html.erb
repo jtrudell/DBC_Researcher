@@ -1,4 +1,4 @@
-<h3> Experiment number <%= experiment.id %> </h3>
+<h3> Experiment #<%= experiment.id %> </h3>
 
 <table class="table table-striped">
   <tr>
@@ -9,25 +9,28 @@
   </tr>
 </table>
 
-<h3>Comments</h3>
-
-  <%experiment.comments.each do |comment|%>
-    <%=comment.comment_text%><br>
-    <%=comment.user.name%><br><br>
-  <%end%>
-
-
-
-<%=render partial: "comments/form", locals: {action: proposal_experiment_comments_path(@proposal, experiment)}%>
-
-
-<ul>
-<%if experiment.observations %>
-  <h3>Observations</h3>
-    <%experiment.observations.each do |observation|%>
-      <li><%=observation.observation_text%></li>
+  <%if experiment.comments%>
+  <div class="panel panel-default panel-danger">
+    <div class="panel-heading">Comments on Experiment #<%=experiment.id%>:</div>
+      <div class="panel-body"><%experiment.comments.each do |comment|%>
+      <%=comment.comment_text%><br>
+      by <%=comment.user.name%> on <br><br>
     <%end%>
-<%end%>
+    <br>
+  <% end %>
+</div>
+</div>
+  <p>Add a comment to Experiment #<%= experiment.id %>:</p>
+  <%=render partial: "comments/form", locals: {action: proposal_comments_path(@proposal)}%>
+
+  <div class="well well-lg">
+<ul class="list-group">
+  <h3>Observations on Experiment #<%= experiment.id %></h3>
+    <%experiment.observations.each do |observation|%>
+    <li class="list-group-item">Made by <%=observation.user.name%> on <%= format_date(observation.created_at) %>: <%=observation.observation_text%></li>
+
+    <%end%>
 </ul>
 
 <%= link_to "Add an Observation", new_proposal_experiment_observation_path(@proposal, experiment)%>
+</div>
