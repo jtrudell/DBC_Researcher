@@ -21,7 +21,7 @@
 
   <%if @proposal.comments%>
     <h3>Comments</h3>
-
+    <div class="comment"></div>
     <%@proposal.comments.each do |comment|%>
       <div class="comment">
         <%=comment.comment_text%><br>
