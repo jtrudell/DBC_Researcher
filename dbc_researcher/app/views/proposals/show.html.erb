@@ -2,14 +2,17 @@
 
 <h1>Proposal #<%= @proposal.id %>: <%= @proposal.title %></h1>
 
-  <ul class>
-    <li>Instructor: <%= @proposal.user.name %></li>
-    <li>Problem: <%= @proposal.problem_description %></li>
-    <li>Hypothesis: <%= @proposal.hypothesis %></li>
-    <li>Approval Status: <%= approved_status(@proposal) %></li>
+<ul class="list-group">
+    <li class="list-group-item">Instructor: <%= @proposal.user.name %></li>
+    <li class="list-group-item">Problem: <%= @proposal.problem_description %></li>
+    <li class="list-group-item">Hypothesis: <%= @proposal.hypothesis %></li>
+    <li class="list-group-item">Approval Status: <%= approved_status(@proposal) %></li>
+  </ul>
 
     <% if @proposal.approved %>
+    <button type="button" class="btn btn-info">
       <%= link_to 'Create a New Experiment for this Proposal', new_proposal_experiment_path(@proposal) %>
+    </button>
       <br>
 
       <h3>Experiments associated with this proposal</h3>
@@ -23,7 +26,6 @@
 
 
     <% end %>
-  </ul>
 
 <br>
 
