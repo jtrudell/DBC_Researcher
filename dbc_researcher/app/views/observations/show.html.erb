@@ -6,5 +6,14 @@
     Observer Name: <%= @observation.user.name %>
   </div>
 
+  <%if @observation.comments%>
+    <h3>Comments</h3>
+
+    <%@observation.comments.each do |comment|%>
+      <%=comment.comment_text%><br>
+      <%=comment.user.name%><br><br>
+    <%end%>
+  <% end %>
+
   <%=render partial: "comments/form", locals: {action: proposal_experiment_observation_comments_path(@proposal, @experiment, @observation)}%>
 
