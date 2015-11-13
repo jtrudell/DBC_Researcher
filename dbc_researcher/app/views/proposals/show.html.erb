@@ -9,7 +9,19 @@
     <li>Approval Status: <%= approved_status(@proposal) %></li>
 
     <% if @proposal.approved %>
-      <%= link_to 'Create an Experiment for this Proposal', new_proposal_experiment_path(@proposal) %>
+      <%= link_to 'Create a New Experiment for this Proposal', new_proposal_experiment_path(@proposal) %>
+      <br>
+
+      <h3>Experiments associated with this proposal</h3>
+      <% if @proposal.experiments.any? %>
+        <% @proposal.experiments.each do |experiment| %>
+          <%= render partial: "experiments/show", layout: false, locals: {experiment: experiment} %>
+        <% end %>
+      <% else %>
+        <p>No experiments have been created for this proposal yet</p>
+      <% end %>
+
+
     <% end %>
   </ul>
 
