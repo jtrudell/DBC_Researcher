@@ -14,4 +14,39 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require comments
 //= require_tree .
+// $(document).ready(function() {
+//   alert("this works!");
+//   console.log('hello');
+  // $("form").on("submit", function(event){
+  // alert("seot");
+  // var url = $(this);
+  // console.log(url);
+
+  //   // var request = $.ajax({
+  //   //   url: ,
+  //   //   method: "post",
+  //   //   data:
+  //   // });
+  // })
+
+// });
+$(document).ready(function() {
+  $('html').on('submit', 'form', function(e){
+    e.preventDefault();
+    console.log("goodbye!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+    var url =  $(this).attr('action');
+    var data = $(this).serialize();
+    var request = $.ajax({url: url, method: 'post', data: data})
+
+    request.done(function(data){
+      // console.log(data.comment_text);
+      var text = $(".comment").last();
+      console.log(text);
+      $(text).append('<div class="comment">'+ data.comment_text +'<br>'+ data.name +'</div>');
+
+    });
+  });
+});
+

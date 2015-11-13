@@ -17,8 +17,10 @@ class CommentsController < ApplicationController
       @comment = @experiment.comments.create(comment_params.merge({user_id: current_user.id}))
       redirect_to proposal_experiment_path(@proposal, @experiment)
     elsif @proposal
+      p params
       @comment = @proposal.comments.create(comment_params.merge({user_id: current_user.id}))
-      redirect_to proposal_path(@proposal)
+      render json:  {comment_text: @comment.comment_text, name: @comment.user.name}
+      # redirect_to proposal_path(@proposal)
     end
 
 
