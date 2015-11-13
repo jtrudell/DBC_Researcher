@@ -10,6 +10,8 @@ class ObservationsController < ApplicationController
 
   def show
     @observation = Observation.find_by(id: params[:id])
+    @experiment = Experiment.find_by(id: params[:experiment_id])
+    @proposal = Proposal.find_by(id: params[:proposal_id])
   end
 
   def edit

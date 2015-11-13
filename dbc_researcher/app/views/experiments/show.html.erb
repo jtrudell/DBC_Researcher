@@ -1,0 +1,19 @@
+<h3>Experiment number <%= @experiment.id %> </h3>
+
+<table border="1">
+  <tr>
+    <td>Proposal</td><td>Cohort</td><td>Description</td><td>Required Supplies</td><td>Goals</td><td>Conclusions</td><td>Completed?</td>
+  </tr>
+  <tr>
+    <td><a href=<%=proposal_path(@experiment.proposal.id)%>><%=@experiment.proposal.title%></a></td><td><%=@experiment.cohort.year.to_s + ' ' + @experiment.cohort.name%></td><td><a href=<%=proposal_experiment_path(@experiment.proposal.id, @experiment.id)%>><%=@experiment.experiment_description%></a></td><td><%=@experiment.required_supplies_for_experiment%></td><td><%=@experiment.goal_description%></td><td><%=@experiment.conclusions%></td><td><%=@experiment.completed%></td><td></td>
+  </tr>
+</table>
+<%if @experiment.user_id == current_user.id %>
+  <%= link_to "Edit", edit_proposal_experiment_path(params[:proposal_id], @experiment) %>
+<%end%>
+<h3>Observations</h3>
+<ul>
+  <%@experiment.observations.each do |observation|%>
+    <li><%=observation.observation_text%></li>
+  <%end%>
+</ul>
