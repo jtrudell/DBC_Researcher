@@ -1,12 +1,7 @@
-<h3>Pending Proposals</h3>
+<h4>Open Proposals</h4>
       <% pending_proposals.each do |proposal| %>
-      <ul class="sidebar-nav">
-          <li class="sidebar-brand"> Proposal No. <%= proposal.id %></li>
-          <li>Title: <%= proposal.title %></li>
-          <li>Instructor: <%= proposal.user.name %></li>
-          <li>Problem: <%= proposal.problem_description %></li>
-          <li>Hypothesis: <%= proposal.hypothesis %></li>
-          <td><%= approved_status(proposal) %></td>
-          <td><%= link_to 'Show', proposal %></td>
+      <ul class="list-group">
+          <li class="list-group-item list-group-item-info">No. <%= proposal.id %>: <%= proposal.title %> <span class="badge">open</span></li></li>
+          <li class="list-group-item"><%= link_to 'Show', proposal %></li>
         </ul>
       <% end %>
