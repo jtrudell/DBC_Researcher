@@ -1,13 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<div class='container'>
+<div class="container-fluid">
 <h1>Dashboard</h1>
 
-<div class= "panel panel-default">
   <% if current_user %>
-  <div class="sidebar">
+  <div class="row-fluid">
+    <div class="span2">
     <%= render 'sidebar' %>
   </div>
+
+  <div class="span8">
 
     <h1>Proposals</h1>
 
@@ -16,12 +18,8 @@
           <tr>
             <th>ID</th>
             <th>Title</th>
-            <th>Instructor</th>
-            <th>Problem</th>
-            <th>Hypothesis</th>
             <th>Approval Status</th>
             <th>Options</th>
-            <th colspan="3"></th>
           </tr>
         </thead>
 
@@ -30,9 +28,6 @@
             <tr>
               <td>#<%= proposal.id %></td>
               <td><%= proposal.title %></td>
-              <td><%= proposal.user.name %></td>
-              <td><%= proposal.problem_description %></td>
-              <td><%= proposal.hypothesis %></td>
               <td><%= approved_status(proposal) %></td>
               <td><%= link_to 'Show', proposal %></td>
               <% if current_user.id == proposal.user.id || current_user.admin == true %>
@@ -46,11 +41,14 @@
 
   <br>
 </div>
+</div>
 
 <% else %>
+<div class="container"
 <div class="jumbotron">
   <h3>Only authorized users can access ResearchIt! Please login in below.</h3>
   <%= render '/sessions/new' %>
-<div>
+</div>
 <% end %>
+</div>
 </div>

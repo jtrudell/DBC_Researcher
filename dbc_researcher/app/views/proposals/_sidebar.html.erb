@@ -1,9 +1,6 @@
-<div class='container'>
-
-<h2>Pending Proposals</h2>
+<h3>Pending Proposals</h3>
 
 <div>
-
       <% pending_proposals.each do |proposal| %>
         <ul>
           <li>Proposal No. <%= proposal.id %></li>
@@ -15,9 +12,6 @@
           <td><%= link_to 'Show', proposal %></td>
         </ul>
       <% end %>
-
-
   <br>
 
-</div>
 </div>
