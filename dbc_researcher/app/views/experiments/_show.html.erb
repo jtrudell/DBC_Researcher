@@ -1,0 +1,33 @@
+<h3> Experiment number <%= experiment.id %> </h3>
+
+<table class="table table-striped">
+  <tr>
+    <td>Proposal</td><td>Cohort</td><td>Description</td><td>Required Supplies</td><td>Goals</td><td>Conclusions</td><td>Completed?</td>
+  </tr>
+  <tr>
+    <td><a href=<%=proposal_path(experiment.proposal.id)%>><%=experiment.proposal.title%></a></td><td><%=experiment.cohort.year.to_s + ' ' + experiment.cohort.name%></td><td><a href=<%=proposal_experiment_path(experiment.proposal.id, experiment.id)%>><%=experiment.experiment_description%></a></td><td><%=experiment.required_supplies_for_experiment%></td><td><%=experiment.goal_description%></td><td><%=experiment.conclusions%></td><td><%=experiment.completed%></td><td></td>
+  </tr>
+</table>
+
+<h3>Comments</h3>
+
+  <%experiment.comments.each do |comment|%>
+    <%=comment.comment_text%><br>
+    <%=comment.user.name%><br><br>
+  <%end%>
+
+
+
+<%=render partial: "comments/form", locals: {action: proposal_experiment_comments_path(@proposal, experiment)}%>
+
+
+<ul>
+<%if experiment.observations %>
+  <h3>Observations</h3>
+    <%experiment.observations.each do |observation|%>
+      <li><%=observation.observation_text%></li>
+    <%end%>
+<%end%>
+</ul>
+
+<%= link_to "Add an Observation", new_proposal_experiment_observation_path(@proposal, experiment)%>
