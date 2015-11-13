@@ -8,6 +8,7 @@ class ExperimentsController < ApplicationController
   end
   def new
     @experiment = Experiment.new
+    @cohort = Cohort.select(:name).distinct.map {|cohort| [cohort.name, cohort.id]}
   end
   def create
       experiment = Experiment.new(proposal_id: params[:proposal_id], cohort_id: cohort_params[:cohort], user_id: session[:user_id], experiment_description: exp_params[:experiment_description], required_supplies_for_experiment: exp_params[:required_supplies_for_experiment], completed: exp_params[:completed], goal_description: exp_params[:goal_description], conclusions: exp_params[:conclusions])
