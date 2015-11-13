@@ -1,11 +1,11 @@
 
 <h1><%= @proposal.title %></h1>
 
-  <ul>
-    <li>Creator: <%= @proposal.user.name %></li>
+  <ul class>
+    <li>Instructor: <%= @proposal.user.name %></li>
     <li>Problem: <%= @proposal.problem_description %></li>
     <li>Hypothesis: <%= @proposal.hypothesis %></li>
-    <li>Approval Status:<%= approved_status(@proposal) %></li>
+    <li>Approval Status: <%= approved_status(@proposal) %></li>
 
     <% if @proposal.approved %>
       <%= link_to 'Create an Experiment for this Proposal', new_proposal_experiment_path(@proposal) %>
@@ -21,4 +21,3 @@
   <%= link_to 'Destroy', @proposal, method: :delete, data: { confirm: 'Are you sure?' } %>
 <%=render partial: "comments/form", locals: {action: proposal_comments_path(@proposal)}%>
 <% end %>
-
