@@ -34,6 +34,6 @@ end
   Proposal.create(title: Faker::Lorem.sentence, problem_description: Faker::Lorem.sentence, hypothesis: Faker::Lorem.sentence, user_id: Faker::Number.between(1, 20), approved: [true, false].sample)
 end
 
-# 40.times do
-#   Experiment.create(proposal_id: Faker::Number.between(1, 20), cohort_id: Faker::Number.between(1, 10), user_id: Faker::Number.between(1, 10), experiment_description: Faker::Lorem.sentences, required_supplies_for_experiment: Faker::Lorem.words(4), goal_description: Faker::Lorem.sentence(2), conclusions: Faker::Lorem.sentence(4), completed: [true, false].sample)
-# end
+40.times do
+  Experiment.create(proposal_id: Faker::Number.between(1, 20), cohort_id: Faker::Number.between(1, 10), user_id: Faker::Number.between(1, 10), experiment_description: Faker::Lorem.sentences, required_supplies_for_experiment: Faker::Lorem.words(4), goal_description: Faker::Lorem.sentence(2), conclusions: Faker::Lorem.sentence(4), completed: [true, false].sample)
+end
