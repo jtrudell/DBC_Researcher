@@ -1,5 +1,7 @@
 class ObservationsController < ApplicationController
 
+  before_action :set_observation, only: [:show, :edit, :update]
+
   def index
     @observations = Observation.where(experiment_id: params[:experiment_id])
   end
@@ -9,17 +11,17 @@ class ObservationsController < ApplicationController
   end
 
   def show
-    @observation = Observation.find_by(id: params[:id])
+    # @observation = Observation.find_by(id: params[:id])
     @experiment = Experiment.find_by(id: params[:experiment_id])
     @proposal = Proposal.find_by(id: params[:proposal_id])
   end
 
   def edit
-    @observation = Observation.find_by(id: params[:id])
+    # @observation = Observation.find_by(id: params[:id])
   end
 
   def update
-    @observation = Observation.find_by(id: params[:id])
+    # @observation = Observation.find_by(id: params[:id])
     @observation.assign_attributes(observation_params)
 
     if @observation.save
@@ -47,6 +49,10 @@ class ObservationsController < ApplicationController
 
   def observation_params
     params.require(:observation).permit(:observation_text)
+  end
+
+  def set_observation
+    @observation = Observation.find(params[:id])
   end
 
 end
