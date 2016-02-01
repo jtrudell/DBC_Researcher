@@ -11,17 +11,15 @@ class ObservationsController < ApplicationController
   end
 
   def show
-    # @observation = Observation.find_by(id: params[:id])
     @experiment = Experiment.find_by(id: params[:experiment_id])
     @proposal = Proposal.find_by(id: params[:proposal_id])
   end
 
   def edit
-    # @observation = Observation.find_by(id: params[:id])
+
   end
 
   def update
-    # @observation = Observation.find_by(id: params[:id])
     @observation.assign_attributes(observation_params)
 
     if @observation.save
