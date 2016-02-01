@@ -4,6 +4,9 @@
     Observation: <%= @observation.observation_text %><br>
     Date: <%= format_date(@observation.created_at) %><br>
     Observer Name: <%= @observation.user.name %>
+    <%if @observation.user_id == session[:user_id] %>
+      <p><%= link_to "Edit",  edit_proposal_experiment_observation_path %></p>
+    <%end%>
   </div>
   <div class="comment"></div>
   <%if @observation.comments%>
